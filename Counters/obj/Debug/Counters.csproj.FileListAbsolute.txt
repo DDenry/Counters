@@ -1,0 +1,10 @@
+D:\Project\Code\Counters\Counters\bin\Debug\Counters.exe.config
+D:\Project\Code\Counters\Counters\bin\Debug\Counters.exe
+D:\Project\Code\Counters\Counters\bin\Debug\Counters.pdb
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.MainActivity.resources
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.Properties.Resources.resources
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.csproj.GenerateResource.Cache
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.csproj.CoreCompileInputs.cache
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.exe
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.pdb
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.csprojResolveAssemblyReference.cache

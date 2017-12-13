@@ -1,0 +1,9 @@
+D:\Project\Code\Counters\Counters\bin\Release\Counters.exe.config
+D:\Project\Code\Counters\Counters\bin\Release\Counters.exe
+D:\Project\Code\Counters\Counters\bin\Release\Counters.pdb
+D:\Project\Code\Counters\Counters\obj\Release\Counters.MainActivity.resources
+D:\Project\Code\Counters\Counters\obj\Release\Counters.Properties.Resources.resources
+D:\Project\Code\Counters\Counters\obj\Release\Counters.csproj.GenerateResource.Cache
+D:\Project\Code\Counters\Counters\obj\Release\Counters.csproj.CoreCompileInputs.cache
+D:\Project\Code\Counters\Counters\obj\Release\Counters.exe
+D:\Project\Code\Counters\Counters\obj\Release\Counters.pdb
