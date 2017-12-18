@@ -79,7 +79,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\fullScreen.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\size.png" />
   </ItemGroup>

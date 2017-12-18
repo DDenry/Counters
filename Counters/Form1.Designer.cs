@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             this.panel_title = new System.Windows.Forms.Panel();
+            this.panel_controllButton = new System.Windows.Forms.Panel();
+            this.button_sizable = new System.Windows.Forms.Button();
+            this.button_exit = new System.Windows.Forms.Button();
             this.panel_bottom = new System.Windows.Forms.Panel();
             this.pictureBox_sizeEditable = new System.Windows.Forms.PictureBox();
             this.splitContainer_content = new System.Windows.Forms.SplitContainer();
             this.treeView_menu = new System.Windows.Forms.TreeView();
-            this.panel_controllButton = new System.Windows.Forms.Panel();
-            this.button_exit = new System.Windows.Forms.Button();
-            this.button_sizable = new System.Windows.Forms.Button();
+            this.pictureBox_opeartePicture = new System.Windows.Forms.PictureBox();
             this.panel_title.SuspendLayout();
+            this.panel_controllButton.SuspendLayout();
             this.panel_bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeEditable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer_content)).BeginInit();
             this.splitContainer_content.Panel1.SuspendLayout();
             this.splitContainer_content.SuspendLayout();
-            this.panel_controllButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_opeartePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_title
@@ -54,9 +56,52 @@
             this.panel_title.Name = "panel_title";
             this.panel_title.Size = new System.Drawing.Size(1095, 80);
             this.panel_title.TabIndex = 0;
+            this.panel_title.DoubleClick += new System.EventHandler(this.MinOrMaxForm);
             this.panel_title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownEvent);
             this.panel_title.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveEvent);
             this.panel_title.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUpEvent);
+            // 
+            // panel_controllButton
+            // 
+            this.panel_controllButton.Controls.Add(this.button_sizable);
+            this.panel_controllButton.Controls.Add(this.button_exit);
+            this.panel_controllButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel_controllButton.Location = new System.Drawing.Point(935, 0);
+            this.panel_controllButton.Name = "panel_controllButton";
+            this.panel_controllButton.Size = new System.Drawing.Size(160, 80);
+            this.panel_controllButton.TabIndex = 0;
+            // 
+            // button_sizable
+            // 
+            this.button_sizable.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button_sizable.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button_sizable.FlatAppearance.BorderSize = 0;
+            this.button_sizable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_sizable.Font = new System.Drawing.Font("宋体", 20F);
+            this.button_sizable.ForeColor = System.Drawing.Color.DimGray;
+            this.button_sizable.Location = new System.Drawing.Point(0, 0);
+            this.button_sizable.Name = "button_sizable";
+            this.button_sizable.Size = new System.Drawing.Size(80, 80);
+            this.button_sizable.TabIndex = 1;
+            this.button_sizable.Text = "口";
+            this.button_sizable.UseVisualStyleBackColor = false;
+            this.button_sizable.Click += new System.EventHandler(this.MinOrMaxForm);
+            // 
+            // button_exit
+            // 
+            this.button_exit.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button_exit.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button_exit.FlatAppearance.BorderSize = 0;
+            this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_exit.Font = new System.Drawing.Font("宋体", 20F);
+            this.button_exit.ForeColor = System.Drawing.Color.DimGray;
+            this.button_exit.Location = new System.Drawing.Point(80, 0);
+            this.button_exit.Name = "button_exit";
+            this.button_exit.Size = new System.Drawing.Size(80, 80);
+            this.button_exit.TabIndex = 0;
+            this.button_exit.Text = "×";
+            this.button_exit.UseVisualStyleBackColor = false;
+            this.button_exit.Click += new System.EventHandler(this.ExitForm);
             // 
             // panel_bottom
             // 
@@ -71,7 +116,7 @@
             // pictureBox_sizeEditable
             // 
             this.pictureBox_sizeEditable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_sizeEditable.Image = global::Counters.Properties.Resources.size1;
+            this.pictureBox_sizeEditable.Image = global::Counters.Properties.Resources.size;
             this.pictureBox_sizeEditable.Location = new System.Drawing.Point(1075, 40);
             this.pictureBox_sizeEditable.Name = "pictureBox_sizeEditable";
             this.pictureBox_sizeEditable.Size = new System.Drawing.Size(20, 20);
@@ -114,47 +159,16 @@
             this.treeView_menu.Size = new System.Drawing.Size(223, 530);
             this.treeView_menu.TabIndex = 0;
             // 
-            // panel_controllButton
+            // pictureBox_opeartePicture
             // 
-            this.panel_controllButton.Controls.Add(this.button_sizable);
-            this.panel_controllButton.Controls.Add(this.button_exit);
-            this.panel_controllButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_controllButton.Location = new System.Drawing.Point(935, 0);
-            this.panel_controllButton.Name = "panel_controllButton";
-            this.panel_controllButton.Size = new System.Drawing.Size(160, 80);
-            this.panel_controllButton.TabIndex = 0;
-            // 
-            // button_exit
-            // 
-            this.button_exit.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button_exit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_exit.FlatAppearance.BorderSize = 0;
-            this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_exit.Font = new System.Drawing.Font("宋体", 20F);
-            this.button_exit.ForeColor = System.Drawing.Color.DimGray;
-            this.button_exit.Location = new System.Drawing.Point(80, 0);
-            this.button_exit.Name = "button_exit";
-            this.button_exit.Size = new System.Drawing.Size(80, 80);
-            this.button_exit.TabIndex = 0;
-            this.button_exit.Text = "×";
-            this.button_exit.UseVisualStyleBackColor = false;
-            this.button_exit.Click += new System.EventHandler(this.ExitForm);
-            // 
-            // button_sizable
-            // 
-            this.button_sizable.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button_sizable.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button_sizable.FlatAppearance.BorderSize = 0;
-            this.button_sizable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_sizable.Font = new System.Drawing.Font("宋体", 20F);
-            this.button_sizable.ForeColor = System.Drawing.Color.DimGray;
-            this.button_sizable.Location = new System.Drawing.Point(0, 0);
-            this.button_sizable.Name = "button_sizable";
-            this.button_sizable.Size = new System.Drawing.Size(80, 80);
-            this.button_sizable.TabIndex = 1;
-            this.button_sizable.Text = "口";
-            this.button_sizable.UseVisualStyleBackColor = false;
-            this.button_sizable.Click += new System.EventHandler(this.MinOrMaxForm);
+            this.pictureBox_opeartePicture.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_opeartePicture.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox_opeartePicture.Name = "pictureBox_opeartePicture";
+            this.pictureBox_opeartePicture.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox_opeartePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_opeartePicture.TabIndex = 1;
+            this.pictureBox_opeartePicture.TabStop = false;
+            this.pictureBox_opeartePicture.Visible = false;
             // 
             // MainActivity
             // 
@@ -163,6 +177,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 670);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox_opeartePicture);
             this.Controls.Add(this.splitContainer_content);
             this.Controls.Add(this.panel_bottom);
             this.Controls.Add(this.panel_title);
@@ -170,14 +185,16 @@
             this.Name = "MainActivity";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.MainActivity_Load);
             this.Resize += new System.EventHandler(this.FormResize);
             this.panel_title.ResumeLayout(false);
+            this.panel_controllButton.ResumeLayout(false);
             this.panel_bottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeEditable)).EndInit();
             this.splitContainer_content.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer_content)).EndInit();
             this.splitContainer_content.ResumeLayout(false);
-            this.panel_controllButton.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_opeartePicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -192,6 +209,7 @@
         private System.Windows.Forms.Panel panel_controllButton;
         private System.Windows.Forms.Button button_exit;
         private System.Windows.Forms.Button button_sizable;
+        private System.Windows.Forms.PictureBox pictureBox_opeartePicture;
     }
 }
 

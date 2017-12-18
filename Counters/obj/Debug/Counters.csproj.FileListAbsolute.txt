@@ -7,4 +7,3 @@ D:\Project\Code\Counters\Counters\obj\Debug\Counters.csproj.GenerateResource.Cac
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.csproj.CoreCompileInputs.cache
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.exe
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.pdb
-D:\Project\Code\Counters\Counters\obj\Debug\Counters.csprojResolveAssemblyReference.cache

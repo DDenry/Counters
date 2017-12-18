@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Counters.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ namespace Counters
         private Point preLocation;
 
         private Boolean canSetSize = false;
+        private Boolean canMax = false;
+        private Boolean signal = false;
 
         protected const int minWidth = 1022;
         protected const int minHeight = 670;
@@ -55,6 +58,7 @@ namespace Counters
 
         private void MouseMoveEvent(object sender, MouseEventArgs e)
         {
+
             switch (sender.GetType().Name)
             {
                 case "Panel":
@@ -67,12 +71,34 @@ namespace Counters
                             float Y = preLocation.Y * 1.0f / this.Height;
                             this.WindowState = FormWindowState.Normal;
                             this.Location = (Point)new Size((int)(e.Location.X - this.Width * X), (int)(e.Location.Y - this.Height * Y));
-                            preLocation = e.Location;
+                            signal = true;
                         }
                         else
                         {
+                            if (signal)
+                            {
+                                preLocation = e.Location;
+                                signal = false;
+                            }
                             Point newPosition = new Point(e.Location.X - preLocation.X, e.Location.Y - preLocation.Y);
                             this.Location += new Size(newPosition);
+
+                            //鼠标拖拽窗口至顶端时显示全屏效果
+                            if (e.Location.Y + this.Top == 0)
+                            {
+                                if (!canMax)
+                                {
+                                    canMax = true;
+                                    //TODO:显示全屏标志
+                                    ShowOpeartePicture("FULLSCREEN");
+                                }
+                            }
+                            else if (this.Top >= 0 && canMax)
+                            {
+                                canMax = false;
+                                //
+                                ShowOpeartePicture("HIDE");
+                            }
                         }
                     }
                     break;
@@ -96,6 +122,24 @@ namespace Counters
             }
         }
         //
+        private void ShowOpeartePicture(String name)
+        {
+            switch (name)
+            {
+                case "FULLSCREEN":
+
+                    pictureBox_opeartePicture.Image = Resources.fullScreen;
+                    pictureBox_opeartePicture.Size = new Size(this.Height / 2, this.Height / 2);
+                    pictureBox_opeartePicture.Location = new Point((this.Width - pictureBox_opeartePicture.Width) / 2, (this.Height - pictureBox_opeartePicture.Height) / 2);
+                    pictureBox_opeartePicture.Visible = true;
+                    break;
+                case "HIDE":
+                    pictureBox_opeartePicture.Visible = false;
+                    break;
+            }
+        }
+
+        //
         private void ResizeForm()
         {
             this.Cursor = Cursors.SizeNWSE;
@@ -110,8 +154,19 @@ namespace Counters
         {
             canMoveForm = false;
             canSetSize = false;
-
             this.Cursor = Cursors.Arrow;
+
+            if (this.Top < 0)
+            {
+                this.Top = 0;
+            }
+            //
+            if (canMax)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                canMax = false;
+                pictureBox_opeartePicture.Visible = false;
+            }
         }
 
         private void FormResize(object sender, EventArgs e)
@@ -123,15 +178,22 @@ namespace Counters
             }
         }
 
+        //退出窗体应用
         private void ExitForm(object sender, EventArgs e)
         {
             //
             this.Close();
         }
 
+        //放大或者缩小Form
         private void MinOrMaxForm(object sender, EventArgs e)
         {
             this.WindowState = (this.WindowState == FormWindowState.Maximized ? this.WindowState = FormWindowState.Normal : this.WindowState = FormWindowState.Maximized);
+        }
+
+        private void MainActivity_Load(object sender, EventArgs e)
+        {
+            Console.WriteLine(Screen.PrimaryScreen.Bounds.Height);
         }
     }
 }
