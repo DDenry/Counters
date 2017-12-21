@@ -35,7 +35,8 @@
             this.panel_bottom = new System.Windows.Forms.Panel();
             this.pictureBox_sizeEditable = new System.Windows.Forms.PictureBox();
             this.splitContainer_content = new System.Windows.Forms.SplitContainer();
-            this.treeView_menu = new System.Windows.Forms.TreeView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_1 = new System.Windows.Forms.Panel();
             this.pictureBox_opeartePicture = new System.Windows.Forms.PictureBox();
             this.panel_title.SuspendLayout();
             this.panel_controllButton.SuspendLayout();
@@ -56,6 +57,7 @@
             this.panel_title.Name = "panel_title";
             this.panel_title.Size = new System.Drawing.Size(1095, 80);
             this.panel_title.TabIndex = 0;
+            this.panel_title.SizeChanged += new System.EventHandler(this.FormSizeChanged);
             this.panel_title.DoubleClick += new System.EventHandler(this.MinOrMaxForm);
             this.panel_title.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownEvent);
             this.panel_title.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveEvent);
@@ -137,7 +139,9 @@
             // 
             // splitContainer_content.Panel1
             // 
-            this.splitContainer_content.Panel1.Controls.Add(this.treeView_menu);
+            this.splitContainer_content.Panel1.AutoScroll = true;
+            this.splitContainer_content.Panel1.Controls.Add(this.panel1);
+            this.splitContainer_content.Panel1.Controls.Add(this.panel_1);
             this.splitContainer_content.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer_content.Panel1MinSize = 150;
             // 
@@ -151,13 +155,23 @@
             this.splitContainer_content.SplitterDistance = 223;
             this.splitContainer_content.TabIndex = 2;
             // 
-            // treeView_menu
+            // panel1
             // 
-            this.treeView_menu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_menu.Location = new System.Drawing.Point(0, 0);
-            this.treeView_menu.Name = "treeView_menu";
-            this.treeView_menu.Size = new System.Drawing.Size(223, 530);
-            this.treeView_menu.TabIndex = 0;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 45);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(223, 250);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel_1
+            // 
+            this.panel_1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_1.Location = new System.Drawing.Point(0, 0);
+            this.panel_1.Name = "panel_1";
+            this.panel_1.Size = new System.Drawing.Size(223, 45);
+            this.panel_1.TabIndex = 0;
             // 
             // pictureBox_opeartePicture
             // 
@@ -205,11 +219,12 @@
         private System.Windows.Forms.Panel panel_bottom;
         private System.Windows.Forms.SplitContainer splitContainer_content;
         private System.Windows.Forms.PictureBox pictureBox_sizeEditable;
-        private System.Windows.Forms.TreeView treeView_menu;
         private System.Windows.Forms.Panel panel_controllButton;
         private System.Windows.Forms.Button button_exit;
         private System.Windows.Forms.Button button_sizable;
         private System.Windows.Forms.PictureBox pictureBox_opeartePicture;
+        private System.Windows.Forms.Panel panel_1;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

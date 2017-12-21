@@ -195,5 +195,12 @@ namespace Counters
         {
             Console.WriteLine(Screen.PrimaryScreen.Bounds.Height);
         }
+
+        //窗体大小改变
+        private void FormSizeChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized) pictureBox_sizeEditable.Visible = false;
+            else pictureBox_sizeEditable.Visible = true;
+        }
     }
 }
