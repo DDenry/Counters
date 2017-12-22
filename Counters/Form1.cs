@@ -23,6 +23,8 @@ namespace Counters
         protected const int minWidth = 1022;
         protected const int minHeight = 670;
 
+        private Panel[] contentPanels;
+
         public MainActivity()
         {
             InitializeComponent();
@@ -201,6 +203,39 @@ namespace Counters
         {
             if (this.WindowState == FormWindowState.Maximized) pictureBox_sizeEditable.Visible = false;
             else pictureBox_sizeEditable.Visible = true;
+        }
+
+        //
+        private void FoldingMenuOperate(object sender, EventArgs e)
+        {
+            Panel panel = sender as Panel;
+            switch (panel.Name)
+            {
+                //
+                case "panel_menu_1":
+                    panel_menu_1_content.Visible = !panel_menu_1_content.Visible;
+                    break;
+                //
+                case "panel_menu_2":
+                    //
+                    foreach (Panel content in contentPanels)
+                        content.Visible = false;
+                    panel_timer.Visible = true;
+                    break;
+                //
+                case "panel_menu_3":
+                    //
+                    foreach (Panel content in contentPanels)
+                        content.Visible = false;
+                    panel_record.Visible = true;
+                    break;
+            }
+        }
+
+        private void panel_title_Paint(object sender, PaintEventArgs e)
+        {
+            //
+            contentPanels = new Panel[] { panel_timer, panel_record };
         }
     }
 }
