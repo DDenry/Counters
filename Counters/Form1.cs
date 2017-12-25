@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,6 +15,9 @@ namespace Counters
 {
     public partial class MainActivity : Form
     {
+        private SynchronizationContext _syncContext = null;
+        //
+        private String systemSavePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "DDenry/Counters");
         private Boolean canMoveForm = false;
         private Point preLocation;
 
@@ -195,7 +200,45 @@ namespace Counters
 
         private void MainActivity_Load(object sender, EventArgs e)
         {
-            Console.WriteLine(Screen.PrimaryScreen.Bounds.Height);
+            ChangeThemeColor();
+            _syncContext = SynchronizationContext.Current;
+            //C:\Users\DDenry\AppData\Roaming
+            Console.WriteLine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData));
+            //创建应用暂存路径
+            if (!Directory.Exists(systemSavePath))
+            {
+                Directory.CreateDirectory(systemSavePath);
+            }
+
+            //加载已存在的记录
+            CheckExistedLogFile();
+        }
+        //
+        private List<FileInfo> CheckExistedLogFile()
+        {
+            List<FileInfo> existedLogFileList = new List<FileInfo>();
+            //
+            foreach (String path in Directory.GetFiles(systemSavePath))
+            {
+                FileInfo item = new FileInfo(path);
+                if (item.Extension.Equals(".txt"))
+                {
+                    existedLogFileList.Add(item);
+                }
+            }
+
+            //TODO:加载已存在的记录
+            _syncContext.Post((o) =>
+            {
+                listBox_matchRecords.Items.Clear();
+                foreach (FileInfo item in existedLogFileList)
+                {
+                    listBox_matchRecords.Items.Add(Path.GetFileNameWithoutExtension(item.FullName));
+                }
+
+            }, "");
+
+            return existedLogFileList;
         }
 
         //窗体大小改变
@@ -209,25 +252,26 @@ namespace Counters
         private void FoldingMenuOperate(object sender, EventArgs e)
         {
             Panel panel = sender as Panel;
+            //
+            foreach (Panel content in contentPanels)
+                content.Visible = false;
+
             switch (panel.Name)
             {
                 //
                 case "panel_menu_1":
-                    panel_menu_1_content.Visible = !panel_menu_1_content.Visible;
+                    panel_main.Visible = true;
+                    panel_menu_1_content.Visible = true;
                     break;
                 //
                 case "panel_menu_2":
-                    //
-                    foreach (Panel content in contentPanels)
-                        content.Visible = false;
                     panel_timer.Visible = true;
+                    panel_menu_1_content.Visible = false;
                     break;
                 //
                 case "panel_menu_3":
-                    //
-                    foreach (Panel content in contentPanels)
-                        content.Visible = false;
                     panel_record.Visible = true;
+                    panel_menu_1_content.Visible = false;
                     break;
             }
         }
@@ -235,7 +279,117 @@ namespace Counters
         private void panel_title_Paint(object sender, PaintEventArgs e)
         {
             //
-            contentPanels = new Panel[] { panel_timer, panel_record };
+            contentPanels = new Panel[] { panel_main, panel_timer, panel_record };
+        }
+
+        //
+        private void ShowFileContent(object sender)
+        {
+            ListBox listBox = sender as ListBox;
+            //
+            if (listBox.SelectedIndex != -1)
+            {
+                String item = listBox_matchRecords.SelectedItem.ToString();
+                //
+                textBox_recordContent.Text = "正在读取，请稍后~";
+                //读取文件内容并显示
+                _syncContext.Post((o) =>
+                {
+                    textBox_recordContent.Text = File.ReadAllText(Path.Combine(systemSavePath, item + ".txt"));
+                }, "");
+            }
+            else textBox_recordContent.Text = "";
+        }
+
+        private void PanelVisibleChanged(object sender, EventArgs e)
+        {
+            Panel panel = sender as Panel;
+            switch (panel.Name)
+            {
+                case "panel_timer":
+                    break;
+                case "panel_record":
+                    listBox_matchRecords.SelectedIndex = -1;
+                    break;
+
+            }
+        }
+
+        private void ListBoxSelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            switch (listBox.Name)
+            {
+                case "listBox_matchRecords":
+                    //
+                    ShowFileContent(listBox);
+                    break;
+            }
+        }
+
+        private void DeleteSelectedRecord(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("该操作将删除所选记录，是否继续？", "系统消息", MessageBoxButtons.YesNo, MessageBoxIcon.Information))
+            {
+                //
+                File.Delete(Path.Combine(systemSavePath, listBox_matchRecords.SelectedItem.ToString() + ".txt"));
+                //删除列表所选项
+                listBox_matchRecords.Items.RemoveAt(listBox_matchRecords.SelectedIndex);
+            }
+        }
+
+        //
+        private void ChangeThemeColor()
+        {
+            Color color_first = ColorTranslator.FromHtml("#191B1F");
+            Color color_second = ColorTranslator.FromHtml("#16181C");
+            Color color_third = ColorTranslator.FromHtml("#222225");
+            Color color_label = ColorTranslator.FromHtml("#FFFFFF");
+            //
+            this.BackColor = color_first;
+
+            pictureBox_sizeEditable.BackColor = color_first;
+            //Content_Left
+            panel_menu_1.BackColor = color_first;
+            panel_menu_2.BackColor = color_first;
+            panel_menu_3.BackColor = color_first;
+            panel_menu_1_content.BackColor = color_first;
+            panel_reset.BackColor = color_first;
+            panel_record.BackColor = color_first;
+            splitContainer_content.Panel1.BackColor = color_first;
+            panel2.BackColor = color_first;
+            panel3.BackColor = color_first;
+
+            //Content_Right
+            splitContainer_content.Panel2.BackColor = color_second;
+
+            panel1.BackColor = color_second;
+            panel4.BackColor = color_second;
+            panel5.BackColor = color_second;
+            panel6.BackColor = color_second;
+            panel7.BackColor = color_second;
+            panel8.BackColor = color_second;
+
+            panel_main.BackColor = color_second;
+            panel_timer.BackColor = color_second;
+            panel_record.BackColor = color_second;
+
+            groupBox_main.BackColor = color_second;
+            groupBox_timer.BackColor = color_second;
+            groupBox_record.BackColor = color_second;
+
+            //Top&Bottom
+            panel_bottom.BackColor = color_third;
+            panel_title.BackColor = color_third;
+            panel_controllButton.BackColor = color_third;
+            button_sizable.BackColor = color_third;
+            button_exit.BackColor = color_third;
+            pictureBox_sizeEditable.BackColor = color_third;
+
+            //label
+            label_teamRedName.ForeColor = color_label;
+            label_teamBlueName.ForeColor = color_label;
+
         }
     }
 }
