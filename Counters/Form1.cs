@@ -251,29 +251,28 @@ namespace Counters
         //
         private void FoldingMenuOperate(object sender, EventArgs e)
         {
-            Panel panel = sender as Panel;
-            //
-            foreach (Panel content in contentPanels)
-                content.Visible = false;
-
-            switch (panel.Name)
+            Button button = sender as Button;
+            switch (button.Name)
             {
                 //
-                case "panel_menu_1":
+                case "button_main":
                     panel_main.Visible = true;
                     panel_menu_1_content.Visible = true;
                     break;
                 //
-                case "panel_menu_2":
+                case "button_timer":
                     panel_timer.Visible = true;
                     panel_menu_1_content.Visible = false;
                     break;
                 //
-                case "panel_menu_3":
+                case "button_record":
                     panel_record.Visible = true;
                     panel_menu_1_content.Visible = false;
                     break;
             }
+            //
+            foreach (Panel content in contentPanels)
+                if (!content.Name.Equals(button.Name.Replace("button", "panel"))) content.Visible = false;
         }
 
         private void panel_title_Paint(object sender, PaintEventArgs e)
@@ -359,6 +358,9 @@ namespace Counters
             splitContainer_content.Panel1.BackColor = color_first;
             panel2.BackColor = color_first;
             panel3.BackColor = color_first;
+            button_main.BackColor = color_first;
+            button_timer.BackColor = color_first;
+            button_record.BackColor = color_first;
 
             //Content_Right
             splitContainer_content.Panel2.BackColor = color_second;
@@ -378,6 +380,10 @@ namespace Counters
             groupBox_timer.BackColor = color_second;
             groupBox_record.BackColor = color_second;
 
+            listBox_matchRecords.BackColor = color_second;
+            textBox_recordContent.BackColor = color_second;
+
+
             //Top&Bottom
             panel_bottom.BackColor = color_third;
             panel_title.BackColor = color_third;
@@ -387,9 +393,17 @@ namespace Counters
             pictureBox_sizeEditable.BackColor = color_third;
 
             //label
-            label_teamRedName.ForeColor = color_label;
-            label_teamBlueName.ForeColor = color_label;
-
+            groupBox_main.ForeColor = color_label;
+            groupBox_timer.ForeColor = color_label;
+            groupBox_record.ForeColor = color_label;
+            //label_teamRedName.ForeColor = color_label;
+            //label_teamBlueName.ForeColor = color_label;
+            label_playerRedName.ForeColor = color_label;
+            label_playerBlueName.ForeColor = color_label;
+            button_main.ForeColor = color_label;
+            button_timer.ForeColor = color_label;
+            button_record.ForeColor = color_label;
+            textBox_recordContent.ForeColor = color_label;
         }
     }
 }

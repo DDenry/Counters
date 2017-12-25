@@ -8,3 +8,13 @@ D:\Project\Code\Counters\Counters\obj\Debug\Counters.csproj.CoreCompileInputs.ca
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.exe
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.pdb
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.csprojResolveAssemblyReference.cache
+D:\My Code\C#\Counters\Counters\bin\Debug\Counters.exe.config
+D:\My Code\C#\Counters\Counters\bin\Debug\Counters.exe
+D:\My Code\C#\Counters\Counters\bin\Debug\Counters.pdb
+D:\My Code\C#\Counters\Counters\obj\Debug\Counters.csprojResolveAssemblyReference.cache
+D:\My Code\C#\Counters\Counters\obj\Debug\Counters.MainActivity.resources
+D:\My Code\C#\Counters\Counters\obj\Debug\Counters.Properties.Resources.resources
+D:\My Code\C#\Counters\Counters\obj\Debug\Counters.csproj.GenerateResource.Cache
+D:\My Code\C#\Counters\Counters\obj\Debug\Counters.csproj.CoreCompileInputs.cache
+D:\My Code\C#\Counters\Counters\obj\Debug\Counters.exe
+D:\My Code\C#\Counters\Counters\obj\Debug\Counters.pdb
