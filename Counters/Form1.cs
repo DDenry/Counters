@@ -235,7 +235,9 @@ namespace Counters
                 {
                     listBox_matchRecords.Items.Add(Path.GetFileNameWithoutExtension(item.FullName));
                 }
-
+                //
+                if (listBox_matchRecords.Items.Count == 0) label_recordTitle.Text = "暂未检测到历史比赛记录！";
+                else label_recordTitle.Text = "";
             }, "");
 
             return existedLogFileList;
@@ -266,6 +268,9 @@ namespace Counters
                     break;
                 //
                 case "button_record":
+                    //
+                    CheckExistedLogFile();
+                    textBox_recordContent.Text = "";
                     panel_record.Visible = true;
                     panel_menu_1_content.Visible = false;
                     break;
@@ -310,7 +315,6 @@ namespace Counters
                 case "panel_record":
                     listBox_matchRecords.SelectedIndex = -1;
                     break;
-
             }
         }
 
@@ -334,6 +338,9 @@ namespace Counters
                 File.Delete(Path.Combine(systemSavePath, listBox_matchRecords.SelectedItem.ToString() + ".txt"));
                 //删除列表所选项
                 listBox_matchRecords.Items.RemoveAt(listBox_matchRecords.SelectedIndex);
+                //
+                if (listBox_matchRecords.Items.Count == 0) label_recordTitle.Text = "暂未检测到历史比赛记录！";
+                else label_recordTitle.Text = "";
             }
         }
 
@@ -343,7 +350,8 @@ namespace Counters
             Color color_first = ColorTranslator.FromHtml("#191B1F");
             Color color_second = ColorTranslator.FromHtml("#16181C");
             Color color_third = ColorTranslator.FromHtml("#222225");
-            Color color_label = ColorTranslator.FromHtml("#FFFFFF");
+            Color color_label_title = ColorTranslator.FromHtml("#969696");
+            Color color_label_content = ColorTranslator.FromHtml("#FFFFFF");
             //
             this.BackColor = color_first;
 
@@ -393,17 +401,18 @@ namespace Counters
             pictureBox_sizeEditable.BackColor = color_third;
 
             //label
-            groupBox_main.ForeColor = color_label;
-            groupBox_timer.ForeColor = color_label;
-            groupBox_record.ForeColor = color_label;
+            groupBox_main.ForeColor = color_label_title;
+            groupBox_timer.ForeColor = color_label_title;
+            groupBox_record.ForeColor = color_label_title;
             //label_teamRedName.ForeColor = color_label;
             //label_teamBlueName.ForeColor = color_label;
-            label_playerRedName.ForeColor = color_label;
-            label_playerBlueName.ForeColor = color_label;
-            button_main.ForeColor = color_label;
-            button_timer.ForeColor = color_label;
-            button_record.ForeColor = color_label;
-            textBox_recordContent.ForeColor = color_label;
+            label_playerRedName.ForeColor = color_label_content;
+            label_playerBlueName.ForeColor = color_label_content;
+            button_main.ForeColor = color_label_title;
+            button_timer.ForeColor = color_label_title;
+            button_record.ForeColor = color_label_title;
+            textBox_recordContent.ForeColor = color_label_content;
+            label_recordTitle.ForeColor = color_label_content;
         }
     }
 }
