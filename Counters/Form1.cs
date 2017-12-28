@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Counters
 {
@@ -25,11 +26,21 @@ namespace Counters
         private Boolean canMax = false;
         private Boolean signal = false;
 
+        private int themeType = 0;
+        private int themeNum = 0;
+
         protected const int minWidth = 1022;
         protected const int minHeight = 670;
 
         private Panel[] contentPanels;
 
+        private enum SKINS
+        {
+            BLACK,
+            BLUE,
+            GREEN,
+            YELLOW
+        };
         public MainActivity()
         {
             InitializeComponent();
@@ -198,9 +209,23 @@ namespace Counters
             this.WindowState = (this.WindowState == FormWindowState.Maximized ? this.WindowState = FormWindowState.Normal : this.WindowState = FormWindowState.Maximized);
         }
 
+        private int GetConfigTheme()
+        {
+            foreach (string key in ConfigurationManager.AppSettings)
+            {
+                if (key == "THEME")
+                {
+                    return int.Parse(ConfigurationManager.AppSettings["THEME"]);
+                }
+            }
+            return (int)SKINS.BLACK;
+        }
+
         private void MainActivity_Load(object sender, EventArgs e)
         {
-            ChangeThemeColor();
+            themeNum = Enum.GetNames(new SKINS().GetType()).Length;
+            ChangeThemeColor((SKINS)GetConfigTheme());
+            //
             _syncContext = SynchronizationContext.Current;
             //C:\Users\DDenry\AppData\Roaming
             Console.WriteLine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData));
@@ -345,16 +370,49 @@ namespace Counters
         }
 
         //
-        private void ChangeThemeColor()
+        private void ChangeSkin(object sender, EventArgs e)
         {
-            Color color_first = ColorTranslator.FromHtml("#191B1F");
-            Color color_second = ColorTranslator.FromHtml("#16181C");
-            Color color_third = ColorTranslator.FromHtml("#222225");
-            Color color_label_title = ColorTranslator.FromHtml("#969696");
-            Color color_label_content = ColorTranslator.FromHtml("#FFFFFF");
+            ChangeThemeColor((SKINS)(themeType++ % themeNum));
+        }
+        //
+        private void ChangeThemeColor(SKINS skins)
+        {
+            //
+            themeType = (int)skins;
+
+            Color color_first = ColorTranslator.FromHtml("#F5F5F7");
+            Color color_second = ColorTranslator.FromHtml("#FAFAFA");
+            Color color_third = ColorTranslator.FromHtml("#44AAF8");
+            Color color_label_title = ColorTranslator.FromHtml("#0A0A0A");
+            Color color_label_content = ColorTranslator.FromHtml("#000000");
+            //
+            switch (skins)
+            {
+                case SKINS.BLACK:
+                    color_first = ColorTranslator.FromHtml("#191B1F");
+                    color_second = ColorTranslator.FromHtml("#16181C");
+                    color_third = ColorTranslator.FromHtml("#222225");
+                    color_label_title = ColorTranslator.FromHtml("#969696");
+                    color_label_content = ColorTranslator.FromHtml("#FFFFFF");
+                    //
+                    break;
+                case SKINS.GREEN:
+                    color_third = ColorTranslator.FromHtml("#3BBA7D");
+                    break;
+                //
+                case SKINS.BLUE:
+                    color_third = ColorTranslator.FromHtml("#44AAF8");
+                    break;
+                case SKINS.YELLOW:
+                    color_third = ColorTranslator.FromHtml("#E6B450");
+                    break;
+                default:
+
+                    break;
+            }
+
             //
             this.BackColor = color_first;
-
             pictureBox_sizeEditable.BackColor = color_first;
             //Content_Left
             panel_menu_1.BackColor = color_first;
@@ -396,6 +454,7 @@ namespace Counters
             panel_bottom.BackColor = color_third;
             panel_title.BackColor = color_third;
             panel_controllButton.BackColor = color_third;
+            button_skin.BackColor = color_third;
             button_sizable.BackColor = color_third;
             button_exit.BackColor = color_third;
             pictureBox_sizeEditable.BackColor = color_third;
@@ -413,6 +472,14 @@ namespace Counters
             button_record.ForeColor = color_label_title;
             textBox_recordContent.ForeColor = color_label_content;
             label_recordTitle.ForeColor = color_label_content;
+        }
+
+        private void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            //TODO:将主题写入appSetting
+            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configuration.AppSettings.Settings["THEME"].Value = themeType.ToString();
+            configuration.Save();
         }
     }
 }

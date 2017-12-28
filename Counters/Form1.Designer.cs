@@ -51,6 +51,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_menu_1 = new System.Windows.Forms.Panel();
             this.button_main = new System.Windows.Forms.Button();
+            this.panel_record = new System.Windows.Forms.Panel();
+            this.groupBox_record = new System.Windows.Forms.GroupBox();
+            this.textBox_recordContent = new System.Windows.Forms.TextBox();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.listBox_matchRecords = new System.Windows.Forms.ListBox();
+            this.label_recordTitle = new System.Windows.Forms.Label();
             this.panel_main = new System.Windows.Forms.Panel();
             this.groupBox_main = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -66,13 +72,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel_timer = new System.Windows.Forms.Panel();
             this.groupBox_timer = new System.Windows.Forms.GroupBox();
-            this.panel_record = new System.Windows.Forms.Panel();
-            this.groupBox_record = new System.Windows.Forms.GroupBox();
-            this.textBox_recordContent = new System.Windows.Forms.TextBox();
-            this.listBox_matchRecords = new System.Windows.Forms.ListBox();
-            this.label_recordTitle = new System.Windows.Forms.Label();
             this.pictureBox_opeartePicture = new System.Windows.Forms.PictureBox();
-            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.button_skin = new System.Windows.Forms.Button();
             this.panel_title.SuspendLayout();
             this.panel_controllButton.SuspendLayout();
             this.panel_bottom.SuspendLayout();
@@ -91,6 +92,8 @@
             this.panel_reset.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_menu_1.SuspendLayout();
+            this.panel_record.SuspendLayout();
+            this.groupBox_record.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.groupBox_main.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,8 +103,6 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel_timer.SuspendLayout();
-            this.panel_record.SuspendLayout();
-            this.groupBox_record.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_opeartePicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,23 +124,24 @@
             // 
             // panel_controllButton
             // 
+            this.panel_controllButton.Controls.Add(this.button_skin);
             this.panel_controllButton.Controls.Add(this.button_sizable);
             this.panel_controllButton.Controls.Add(this.button_exit);
             this.panel_controllButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_controllButton.Location = new System.Drawing.Point(935, 0);
+            this.panel_controllButton.Location = new System.Drawing.Point(855, 0);
             this.panel_controllButton.Name = "panel_controllButton";
-            this.panel_controllButton.Size = new System.Drawing.Size(160, 50);
+            this.panel_controllButton.Size = new System.Drawing.Size(240, 50);
             this.panel_controllButton.TabIndex = 0;
             // 
             // button_sizable
             // 
             this.button_sizable.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button_sizable.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button_sizable.Dock = System.Windows.Forms.DockStyle.Right;
             this.button_sizable.FlatAppearance.BorderSize = 0;
             this.button_sizable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_sizable.Font = new System.Drawing.Font("宋体", 20F);
             this.button_sizable.ForeColor = System.Drawing.Color.DimGray;
-            this.button_sizable.Location = new System.Drawing.Point(0, 0);
+            this.button_sizable.Location = new System.Drawing.Point(80, 0);
             this.button_sizable.Name = "button_sizable";
             this.button_sizable.Size = new System.Drawing.Size(80, 50);
             this.button_sizable.TabIndex = 1;
@@ -155,7 +157,7 @@
             this.button_exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_exit.Font = new System.Drawing.Font("宋体", 20F);
             this.button_exit.ForeColor = System.Drawing.Color.DimGray;
-            this.button_exit.Location = new System.Drawing.Point(80, 0);
+            this.button_exit.Location = new System.Drawing.Point(160, 0);
             this.button_exit.Name = "button_exit";
             this.button_exit.Size = new System.Drawing.Size(80, 50);
             this.button_exit.TabIndex = 0;
@@ -400,6 +402,83 @@
             this.button_main.UseVisualStyleBackColor = false;
             this.button_main.Click += new System.EventHandler(this.FoldingMenuOperate);
             // 
+            // panel_record
+            // 
+            this.panel_record.Controls.Add(this.groupBox_record);
+            this.panel_record.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_record.Location = new System.Drawing.Point(0, 0);
+            this.panel_record.Name = "panel_record";
+            this.panel_record.Size = new System.Drawing.Size(868, 520);
+            this.panel_record.TabIndex = 0;
+            this.panel_record.Visible = false;
+            this.panel_record.VisibleChanged += new System.EventHandler(this.PanelVisibleChanged);
+            // 
+            // groupBox_record
+            // 
+            this.groupBox_record.Controls.Add(this.textBox_recordContent);
+            this.groupBox_record.Controls.Add(this.splitter1);
+            this.groupBox_record.Controls.Add(this.listBox_matchRecords);
+            this.groupBox_record.Controls.Add(this.label_recordTitle);
+            this.groupBox_record.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox_record.Font = new System.Drawing.Font("宋体", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox_record.ForeColor = System.Drawing.Color.DimGray;
+            this.groupBox_record.Location = new System.Drawing.Point(0, 0);
+            this.groupBox_record.Name = "groupBox_record";
+            this.groupBox_record.Size = new System.Drawing.Size(868, 520);
+            this.groupBox_record.TabIndex = 0;
+            this.groupBox_record.TabStop = false;
+            this.groupBox_record.Text = "RECORD";
+            // 
+            // textBox_recordContent
+            // 
+            this.textBox_recordContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_recordContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_recordContent.Font = new System.Drawing.Font("宋体", 20F);
+            this.textBox_recordContent.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBox_recordContent.Location = new System.Drawing.Point(313, 61);
+            this.textBox_recordContent.Multiline = true;
+            this.textBox_recordContent.Name = "textBox_recordContent";
+            this.textBox_recordContent.ReadOnly = true;
+            this.textBox_recordContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_recordContent.Size = new System.Drawing.Size(552, 456);
+            this.textBox_recordContent.TabIndex = 1;
+            this.textBox_recordContent.WordWrap = false;
+            // 
+            // splitter1
+            // 
+            this.splitter1.Enabled = false;
+            this.splitter1.Location = new System.Drawing.Point(303, 61);
+            this.splitter1.MaximumSize = new System.Drawing.Size(20, 0);
+            this.splitter1.MinimumSize = new System.Drawing.Size(10, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(10, 456);
+            this.splitter1.TabIndex = 3;
+            this.splitter1.TabStop = false;
+            // 
+            // listBox_matchRecords
+            // 
+            this.listBox_matchRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox_matchRecords.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listBox_matchRecords.Font = new System.Drawing.Font("宋体", 18F);
+            this.listBox_matchRecords.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.listBox_matchRecords.FormattingEnabled = true;
+            this.listBox_matchRecords.ItemHeight = 24;
+            this.listBox_matchRecords.Location = new System.Drawing.Point(3, 61);
+            this.listBox_matchRecords.Name = "listBox_matchRecords";
+            this.listBox_matchRecords.Size = new System.Drawing.Size(300, 456);
+            this.listBox_matchRecords.TabIndex = 0;
+            this.listBox_matchRecords.SelectedIndexChanged += new System.EventHandler(this.ListBoxSelectedIndexChanged);
+            this.listBox_matchRecords.DoubleClick += new System.EventHandler(this.DeleteSelectedRecord);
+            // 
+            // label_recordTitle
+            // 
+            this.label_recordTitle.AutoSize = true;
+            this.label_recordTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_recordTitle.Location = new System.Drawing.Point(3, 34);
+            this.label_recordTitle.Name = "label_recordTitle";
+            this.label_recordTitle.Size = new System.Drawing.Size(0, 27);
+            this.label_recordTitle.TabIndex = 2;
+            // 
             // panel_main
             // 
             this.panel_main.Controls.Add(this.groupBox_main);
@@ -558,72 +637,6 @@
             this.groupBox_timer.TabStop = false;
             this.groupBox_timer.Text = "TIMER";
             // 
-            // panel_record
-            // 
-            this.panel_record.Controls.Add(this.groupBox_record);
-            this.panel_record.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_record.Location = new System.Drawing.Point(0, 0);
-            this.panel_record.Name = "panel_record";
-            this.panel_record.Size = new System.Drawing.Size(868, 520);
-            this.panel_record.TabIndex = 0;
-            this.panel_record.Visible = false;
-            this.panel_record.VisibleChanged += new System.EventHandler(this.PanelVisibleChanged);
-            // 
-            // groupBox_record
-            // 
-            this.groupBox_record.Controls.Add(this.textBox_recordContent);
-            this.groupBox_record.Controls.Add(this.splitter1);
-            this.groupBox_record.Controls.Add(this.listBox_matchRecords);
-            this.groupBox_record.Controls.Add(this.label_recordTitle);
-            this.groupBox_record.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox_record.Font = new System.Drawing.Font("宋体", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox_record.ForeColor = System.Drawing.Color.DimGray;
-            this.groupBox_record.Location = new System.Drawing.Point(0, 0);
-            this.groupBox_record.Name = "groupBox_record";
-            this.groupBox_record.Size = new System.Drawing.Size(868, 520);
-            this.groupBox_record.TabIndex = 0;
-            this.groupBox_record.TabStop = false;
-            this.groupBox_record.Text = "RECORD";
-            // 
-            // textBox_recordContent
-            // 
-            this.textBox_recordContent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_recordContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_recordContent.Font = new System.Drawing.Font("宋体", 20F);
-            this.textBox_recordContent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox_recordContent.Location = new System.Drawing.Point(313, 61);
-            this.textBox_recordContent.Multiline = true;
-            this.textBox_recordContent.Name = "textBox_recordContent";
-            this.textBox_recordContent.ReadOnly = true;
-            this.textBox_recordContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_recordContent.Size = new System.Drawing.Size(552, 456);
-            this.textBox_recordContent.TabIndex = 1;
-            this.textBox_recordContent.WordWrap = false;
-            // 
-            // listBox_matchRecords
-            // 
-            this.listBox_matchRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox_matchRecords.Dock = System.Windows.Forms.DockStyle.Left;
-            this.listBox_matchRecords.Font = new System.Drawing.Font("宋体", 18F);
-            this.listBox_matchRecords.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.listBox_matchRecords.FormattingEnabled = true;
-            this.listBox_matchRecords.ItemHeight = 24;
-            this.listBox_matchRecords.Location = new System.Drawing.Point(3, 61);
-            this.listBox_matchRecords.Name = "listBox_matchRecords";
-            this.listBox_matchRecords.Size = new System.Drawing.Size(300, 456);
-            this.listBox_matchRecords.TabIndex = 0;
-            this.listBox_matchRecords.SelectedIndexChanged += new System.EventHandler(this.ListBoxSelectedIndexChanged);
-            this.listBox_matchRecords.DoubleClick += new System.EventHandler(this.DeleteSelectedRecord);
-            // 
-            // label_recordTitle
-            // 
-            this.label_recordTitle.AutoSize = true;
-            this.label_recordTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label_recordTitle.Location = new System.Drawing.Point(3, 34);
-            this.label_recordTitle.Name = "label_recordTitle";
-            this.label_recordTitle.Size = new System.Drawing.Size(0, 27);
-            this.label_recordTitle.TabIndex = 2;
-            // 
             // pictureBox_opeartePicture
             // 
             this.pictureBox_opeartePicture.BackColor = System.Drawing.Color.Transparent;
@@ -635,16 +648,21 @@
             this.pictureBox_opeartePicture.TabStop = false;
             this.pictureBox_opeartePicture.Visible = false;
             // 
-            // splitter1
+            // button_skin
             // 
-            this.splitter1.Enabled = false;
-            this.splitter1.Location = new System.Drawing.Point(303, 61);
-            this.splitter1.MaximumSize = new System.Drawing.Size(20, 0);
-            this.splitter1.MinimumSize = new System.Drawing.Size(10, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(10, 456);
-            this.splitter1.TabIndex = 3;
-            this.splitter1.TabStop = false;
+            this.button_skin.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button_skin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button_skin.FlatAppearance.BorderSize = 0;
+            this.button_skin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_skin.Font = new System.Drawing.Font("宋体", 20F);
+            this.button_skin.ForeColor = System.Drawing.Color.DimGray;
+            this.button_skin.Location = new System.Drawing.Point(0, 0);
+            this.button_skin.Name = "button_skin";
+            this.button_skin.Size = new System.Drawing.Size(80, 50);
+            this.button_skin.TabIndex = 2;
+            this.button_skin.Text = "a";
+            this.button_skin.UseVisualStyleBackColor = false;
+            this.button_skin.Click += new System.EventHandler(this.ChangeSkin);
             // 
             // MainActivity
             // 
@@ -661,6 +679,7 @@
             this.Name = "MainActivity";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_Closed);
             this.Load += new System.EventHandler(this.MainActivity_Load);
             this.Resize += new System.EventHandler(this.FormResize);
             this.panel_title.ResumeLayout(false);
@@ -684,6 +703,9 @@
             this.panel_reset.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_menu_1.ResumeLayout(false);
+            this.panel_record.ResumeLayout(false);
+            this.groupBox_record.ResumeLayout(false);
+            this.groupBox_record.PerformLayout();
             this.panel_main.ResumeLayout(false);
             this.groupBox_main.ResumeLayout(false);
             this.groupBox_main.PerformLayout();
@@ -696,9 +718,6 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel_timer.ResumeLayout(false);
-            this.panel_record.ResumeLayout(false);
-            this.groupBox_record.ResumeLayout(false);
-            this.groupBox_record.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_opeartePicture)).EndInit();
             this.ResumeLayout(false);
 
@@ -751,6 +770,7 @@
         private System.Windows.Forms.Button button_timer;
         private System.Windows.Forms.Button button_main;
         private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.Button button_skin;
     }
 }
 
