@@ -146,13 +146,13 @@ namespace Counters
             {
                 case "FULLSCREEN":
 
-                    pictureBox_opeartePicture.Image = Resources.fullScreen;
-                    pictureBox_opeartePicture.Size = new Size(this.Height / 2, this.Height / 2);
-                    pictureBox_opeartePicture.Location = new Point((this.Width - pictureBox_opeartePicture.Width) / 2, (this.Height - pictureBox_opeartePicture.Height) / 2);
-                    pictureBox_opeartePicture.Visible = true;
+                    pictureBox_operatePicture.Image = Resources.fullScreen;
+                    pictureBox_operatePicture.Size = new Size(this.Height / 2, this.Height / 2);
+                    pictureBox_operatePicture.Location = new Point((this.Width - pictureBox_operatePicture.Width) / 2, (this.Height - pictureBox_operatePicture.Height) / 2);
+                    pictureBox_operatePicture.Visible = true;
                     break;
                 case "HIDE":
-                    pictureBox_opeartePicture.Visible = false;
+                    pictureBox_operatePicture.Visible = false;
                     break;
             }
         }
@@ -183,7 +183,7 @@ namespace Counters
             {
                 this.WindowState = FormWindowState.Maximized;
                 canMax = false;
-                pictureBox_opeartePicture.Visible = false;
+                pictureBox_operatePicture.Visible = false;
             }
         }
 
@@ -372,7 +372,8 @@ namespace Counters
         //
         private void ChangeSkin(object sender, EventArgs e)
         {
-            ChangeThemeColor((SKINS)(themeType++ % themeNum));
+            themeType++;
+            ChangeThemeColor((SKINS)(themeType%themeNum));
         }
         //
         private void ChangeThemeColor(SKINS skins)

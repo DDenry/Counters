@@ -30,6 +30,7 @@
         {
             this.panel_title = new System.Windows.Forms.Panel();
             this.panel_controllButton = new System.Windows.Forms.Panel();
+            this.button_skin = new System.Windows.Forms.Button();
             this.button_sizable = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
             this.panel_bottom = new System.Windows.Forms.Panel();
@@ -72,8 +73,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel_timer = new System.Windows.Forms.Panel();
             this.groupBox_timer = new System.Windows.Forms.GroupBox();
-            this.pictureBox_opeartePicture = new System.Windows.Forms.PictureBox();
-            this.button_skin = new System.Windows.Forms.Button();
+            this.pictureBox_operatePicture = new System.Windows.Forms.PictureBox();
             this.panel_title.SuspendLayout();
             this.panel_controllButton.SuspendLayout();
             this.panel_bottom.SuspendLayout();
@@ -103,7 +103,7 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel_timer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_opeartePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_operatePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_title
@@ -132,6 +132,22 @@
             this.panel_controllButton.Name = "panel_controllButton";
             this.panel_controllButton.Size = new System.Drawing.Size(240, 50);
             this.panel_controllButton.TabIndex = 0;
+            // 
+            // button_skin
+            // 
+            this.button_skin.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button_skin.Dock = System.Windows.Forms.DockStyle.Right;
+            this.button_skin.FlatAppearance.BorderSize = 0;
+            this.button_skin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_skin.Font = new System.Drawing.Font("宋体", 20F);
+            this.button_skin.ForeColor = System.Drawing.Color.DimGray;
+            this.button_skin.Location = new System.Drawing.Point(0, 0);
+            this.button_skin.Name = "button_skin";
+            this.button_skin.Size = new System.Drawing.Size(80, 50);
+            this.button_skin.TabIndex = 2;
+            this.button_skin.Text = "a";
+            this.button_skin.UseVisualStyleBackColor = false;
+            this.button_skin.Click += new System.EventHandler(this.ChangeSkin);
             // 
             // button_sizable
             // 
@@ -637,32 +653,16 @@
             this.groupBox_timer.TabStop = false;
             this.groupBox_timer.Text = "TIMER";
             // 
-            // pictureBox_opeartePicture
+            // pictureBox_operatePicture
             // 
-            this.pictureBox_opeartePicture.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_opeartePicture.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_opeartePicture.Name = "pictureBox_opeartePicture";
-            this.pictureBox_opeartePicture.Size = new System.Drawing.Size(28, 28);
-            this.pictureBox_opeartePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_opeartePicture.TabIndex = 1;
-            this.pictureBox_opeartePicture.TabStop = false;
-            this.pictureBox_opeartePicture.Visible = false;
-            // 
-            // button_skin
-            // 
-            this.button_skin.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button_skin.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button_skin.FlatAppearance.BorderSize = 0;
-            this.button_skin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_skin.Font = new System.Drawing.Font("宋体", 20F);
-            this.button_skin.ForeColor = System.Drawing.Color.DimGray;
-            this.button_skin.Location = new System.Drawing.Point(0, 0);
-            this.button_skin.Name = "button_skin";
-            this.button_skin.Size = new System.Drawing.Size(80, 50);
-            this.button_skin.TabIndex = 2;
-            this.button_skin.Text = "a";
-            this.button_skin.UseVisualStyleBackColor = false;
-            this.button_skin.Click += new System.EventHandler(this.ChangeSkin);
+            this.pictureBox_operatePicture.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_operatePicture.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox_operatePicture.Name = "pictureBox_operatePicture";
+            this.pictureBox_operatePicture.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox_operatePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_operatePicture.TabIndex = 1;
+            this.pictureBox_operatePicture.TabStop = false;
+            this.pictureBox_operatePicture.Visible = false;
             // 
             // MainActivity
             // 
@@ -671,7 +671,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 670);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox_opeartePicture);
+            this.Controls.Add(this.pictureBox_operatePicture);
             this.Controls.Add(this.splitContainer_content);
             this.Controls.Add(this.panel_bottom);
             this.Controls.Add(this.panel_title);
@@ -718,7 +718,7 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel_timer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_opeartePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_operatePicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -732,7 +732,7 @@
         private System.Windows.Forms.Panel panel_controllButton;
         private System.Windows.Forms.Button button_exit;
         private System.Windows.Forms.Button button_sizable;
-        private System.Windows.Forms.PictureBox pictureBox_opeartePicture;
+        private System.Windows.Forms.PictureBox pictureBox_operatePicture;
         private System.Windows.Forms.Panel panel_menu_1;
         private System.Windows.Forms.Panel panel_menu_1_content;
         private System.Windows.Forms.Panel panel_reset;
