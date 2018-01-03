@@ -39,7 +39,9 @@ namespace Counters
             BLACK,
             BLUE,
             GREEN,
-            YELLOW
+            YELLOW,
+            LAVENDER,
+            TOMATO
         };
         public MainActivity()
         {
@@ -373,7 +375,7 @@ namespace Counters
         private void ChangeSkin(object sender, EventArgs e)
         {
             themeType++;
-            ChangeThemeColor((SKINS)(themeType%themeNum));
+            ChangeThemeColor((SKINS)(themeType % themeNum));
         }
         //
         private void ChangeThemeColor(SKINS skins)
@@ -404,8 +406,17 @@ namespace Counters
                 case SKINS.BLUE:
                     color_third = ColorTranslator.FromHtml("#44AAF8");
                     break;
+                //
                 case SKINS.YELLOW:
                     color_third = ColorTranslator.FromHtml("#E6B450");
+                    break;
+                //
+                case SKINS.LAVENDER:
+                    color_third = ColorTranslator.FromHtml("#E6E6FA");
+                    break;
+                //
+                case SKINS.TOMATO:
+                    color_third = ColorTranslator.FromHtml("#FF6347");
                     break;
                 default:
 

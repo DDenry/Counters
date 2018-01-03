@@ -145,7 +145,7 @@
             this.button_skin.Name = "button_skin";
             this.button_skin.Size = new System.Drawing.Size(80, 50);
             this.button_skin.TabIndex = 2;
-            this.button_skin.Text = "a";
+            this.button_skin.Text = "Π";
             this.button_skin.UseVisualStyleBackColor = false;
             this.button_skin.Click += new System.EventHandler(this.ChangeSkin);
             // 
