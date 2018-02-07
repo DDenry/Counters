@@ -16,6 +16,8 @@ namespace Counters
 {
     public partial class MainActivity : Form
     {
+        //
+        private FormBorder formBorder;
         private SynchronizationContext _syncContext = null;
         //
         private String systemSavePath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "DDenry/Counters");
@@ -85,12 +87,14 @@ namespace Counters
                     //移动窗体
                     if (e.Button.Equals(MouseButtons.Left) && canMoveForm)
                     {
+
                         if (this.WindowState != FormWindowState.Normal)
                         {
                             float X = preLocation.X * 1.0f / this.Width;
                             float Y = preLocation.Y * 1.0f / this.Height;
                             this.WindowState = FormWindowState.Normal;
                             this.Location = (Point)new Size((int)(e.Location.X - this.Width * X), (int)(e.Location.Y - this.Height * Y));
+                            //
                             signal = true;
                         }
                         else
@@ -111,6 +115,25 @@ namespace Counters
                                     canMax = true;
                                     //TODO:显示全屏标志
                                     ShowOpeartePicture("FULLSCREEN");
+                                }
+                            }
+                            //
+                            else if (e.Location.X + this.Left == 0)
+                            {
+                                if (!canMax)
+                                {
+                                    canMax = true;
+                                    //
+                                    ShowOpeartePicture("LEFTHALF_FULLSCREEN");
+                                }
+                            }//
+                            else if (this.Right - Screen.PrimaryScreen.Bounds.Width >= this.Width - e.Location.X - 1)
+                            {
+                                if (!canMax)
+                                {
+                                    canMax = true;
+                                    //
+                                    ShowOpeartePicture("RIGHTHALF_FULLSCREEN");
                                 }
                             }
                             else if (this.Top >= 0 && canMax)
@@ -147,14 +170,22 @@ namespace Counters
             switch (name)
             {
                 case "FULLSCREEN":
-
-                    pictureBox_operatePicture.Image = Resources.fullScreen;
-                    pictureBox_operatePicture.Size = new Size(this.Height / 2, this.Height / 2);
-                    pictureBox_operatePicture.Location = new Point((this.Width - pictureBox_operatePicture.Width) / 2, (this.Height - pictureBox_operatePicture.Height) / 2);
-                    pictureBox_operatePicture.Visible = true;
+                    //显示边框
+                    formBorder = new FormBorder(0);
+                    formBorder.Show();
+                    break;
+                case "LEFTHALF_FULLSCREEN":
+                    formBorder = new FormBorder(1);
+                    formBorder.Show();
+                    break;
+                case "RIGHTHALF_FULLSCREEN":
+                    formBorder = new FormBorder(2);
+                    formBorder.Show();
                     break;
                 case "HIDE":
-                    pictureBox_operatePicture.Visible = false;
+                    //
+                    if (formBorder != null)
+                        formBorder.Close();
                     break;
             }
         }
@@ -185,7 +216,9 @@ namespace Counters
             {
                 this.WindowState = FormWindowState.Maximized;
                 canMax = false;
-                pictureBox_operatePicture.Visible = false;
+                //
+                if (formBorder != null)
+                    formBorder.Close();
             }
         }
 

@@ -34,7 +34,6 @@
             this.button_sizable = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
             this.panel_bottom = new System.Windows.Forms.Panel();
-            this.pictureBox_sizeEditable = new System.Windows.Forms.PictureBox();
             this.splitContainer_content = new System.Windows.Forms.SplitContainer();
             this.panel_menu_3 = new System.Windows.Forms.Panel();
             this.button_record = new System.Windows.Forms.Button();
@@ -43,13 +42,10 @@
             this.panel_menu_1_content = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel_reset = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_menu_1 = new System.Windows.Forms.Panel();
             this.button_main = new System.Windows.Forms.Button();
             this.panel_record = new System.Windows.Forms.Panel();
@@ -73,11 +69,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel_timer = new System.Windows.Forms.Panel();
             this.groupBox_timer = new System.Windows.Forms.GroupBox();
-            this.pictureBox_operatePicture = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_sizeEditable = new System.Windows.Forms.PictureBox();
             this.panel_title.SuspendLayout();
             this.panel_controllButton.SuspendLayout();
             this.panel_bottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeEditable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer_content)).BeginInit();
             this.splitContainer_content.Panel1.SuspendLayout();
             this.splitContainer_content.Panel2.SuspendLayout();
@@ -86,11 +84,8 @@
             this.panel_menu_2.SuspendLayout();
             this.panel_menu_1_content.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel_reset.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_menu_1.SuspendLayout();
             this.panel_record.SuspendLayout();
             this.groupBox_record.SuspendLayout();
@@ -103,7 +98,10 @@
             this.panel5.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel_timer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_operatePicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeEditable)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_title
@@ -190,20 +188,6 @@
             this.panel_bottom.Name = "panel_bottom";
             this.panel_bottom.Size = new System.Drawing.Size(1095, 100);
             this.panel_bottom.TabIndex = 0;
-            // 
-            // pictureBox_sizeEditable
-            // 
-            this.pictureBox_sizeEditable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_sizeEditable.Image = global::Counters.Properties.Resources.size;
-            this.pictureBox_sizeEditable.Location = new System.Drawing.Point(1075, 80);
-            this.pictureBox_sizeEditable.Name = "pictureBox_sizeEditable";
-            this.pictureBox_sizeEditable.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox_sizeEditable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_sizeEditable.TabIndex = 0;
-            this.pictureBox_sizeEditable.TabStop = false;
-            this.pictureBox_sizeEditable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownEvent);
-            this.pictureBox_sizeEditable.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveEvent);
-            this.pictureBox_sizeEditable.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUpEvent);
             // 
             // splitContainer_content
             // 
@@ -319,15 +303,6 @@
             this.label3.Text = "3";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -351,15 +326,6 @@
             this.label2.Text = "2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // panel_reset
             // 
             this.panel_reset.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -382,15 +348,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // panel_menu_1
             // 
@@ -467,7 +424,7 @@
             this.splitter1.MaximumSize = new System.Drawing.Size(20, 0);
             this.splitter1.MinimumSize = new System.Drawing.Size(10, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(10, 456);
+            this.splitter1.Size = new System.Drawing.Size(10, 0);
             this.splitter1.TabIndex = 3;
             this.splitter1.TabStop = false;
             // 
@@ -653,16 +610,46 @@
             this.groupBox_timer.TabStop = false;
             this.groupBox_timer.Text = "TIMER";
             // 
-            // pictureBox_operatePicture
+            // pictureBox3
             // 
-            this.pictureBox_operatePicture.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_operatePicture.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox_operatePicture.Name = "pictureBox_operatePicture";
-            this.pictureBox_operatePicture.Size = new System.Drawing.Size(28, 28);
-            this.pictureBox_operatePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_operatePicture.TabIndex = 1;
-            this.pictureBox_operatePicture.TabStop = false;
-            this.pictureBox_operatePicture.Visible = false;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(45, 45);
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(45, 45);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(45, 45);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox_sizeEditable
+            // 
+            this.pictureBox_sizeEditable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_sizeEditable.Image = global::Counters.Properties.Resources.size;
+            this.pictureBox_sizeEditable.Location = new System.Drawing.Point(1075, 80);
+            this.pictureBox_sizeEditable.Name = "pictureBox_sizeEditable";
+            this.pictureBox_sizeEditable.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox_sizeEditable.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_sizeEditable.TabIndex = 0;
+            this.pictureBox_sizeEditable.TabStop = false;
+            this.pictureBox_sizeEditable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseDownEvent);
+            this.pictureBox_sizeEditable.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseMoveEvent);
+            this.pictureBox_sizeEditable.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MouseUpEvent);
             // 
             // MainActivity
             // 
@@ -671,7 +658,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 670);
             this.ControlBox = false;
-            this.Controls.Add(this.pictureBox_operatePicture);
             this.Controls.Add(this.splitContainer_content);
             this.Controls.Add(this.panel_bottom);
             this.Controls.Add(this.panel_title);
@@ -685,7 +671,6 @@
             this.panel_title.ResumeLayout(false);
             this.panel_controllButton.ResumeLayout(false);
             this.panel_bottom.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeEditable)).EndInit();
             this.splitContainer_content.Panel1.ResumeLayout(false);
             this.splitContainer_content.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer_content)).EndInit();
@@ -695,13 +680,10 @@
             this.panel_menu_1_content.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel_reset.ResumeLayout(false);
             this.panel_reset.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_menu_1.ResumeLayout(false);
             this.panel_record.ResumeLayout(false);
             this.groupBox_record.ResumeLayout(false);
@@ -718,7 +700,10 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel_timer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_operatePicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeEditable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -732,7 +717,6 @@
         private System.Windows.Forms.Panel panel_controllButton;
         private System.Windows.Forms.Button button_exit;
         private System.Windows.Forms.Button button_sizable;
-        private System.Windows.Forms.PictureBox pictureBox_operatePicture;
         private System.Windows.Forms.Panel panel_menu_1;
         private System.Windows.Forms.Panel panel_menu_1_content;
         private System.Windows.Forms.Panel panel_reset;

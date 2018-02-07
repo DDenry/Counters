@@ -18,3 +18,4 @@ D:\My Code\C#\Counters\Counters\obj\Debug\Counters.csproj.GenerateResource.Cache
 D:\My Code\C#\Counters\Counters\obj\Debug\Counters.csproj.CoreCompileInputs.cache
 D:\My Code\C#\Counters\Counters\obj\Debug\Counters.exe
 D:\My Code\C#\Counters\Counters\obj\Debug\Counters.pdb
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.FormBorder.resources
