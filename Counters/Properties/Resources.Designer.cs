@@ -73,9 +73,39 @@ namespace Counters.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap fullScreen1 {
+            get {
+                object obj = ResourceManager.GetObject("fullScreen1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap fullScreen2 {
+            get {
+                object obj = ResourceManager.GetObject("fullScreen2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap size {
             get {
                 object obj = ResourceManager.GetObject("size", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap size1 {
+            get {
+                object obj = ResourceManager.GetObject("size1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

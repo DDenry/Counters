@@ -7,7 +7,6 @@ D:\Project\Code\Counters\Counters\obj\Debug\Counters.csproj.GenerateResource.Cac
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.csproj.CoreCompileInputs.cache
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.exe
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.pdb
-D:\Project\Code\Counters\Counters\obj\Debug\Counters.csprojResolveAssemblyReference.cache
 D:\My Code\C#\Counters\Counters\bin\Debug\Counters.exe.config
 D:\My Code\C#\Counters\Counters\bin\Debug\Counters.exe
 D:\My Code\C#\Counters\Counters\bin\Debug\Counters.pdb
@@ -19,3 +18,4 @@ D:\My Code\C#\Counters\Counters\obj\Debug\Counters.csproj.CoreCompileInputs.cach
 D:\My Code\C#\Counters\Counters\obj\Debug\Counters.exe
 D:\My Code\C#\Counters\Counters\obj\Debug\Counters.pdb
 D:\Project\Code\Counters\Counters\obj\Debug\Counters.FormBorder.resources
+D:\Project\Code\Counters\Counters\obj\Debug\Counters.csprojAssemblyReference.cache

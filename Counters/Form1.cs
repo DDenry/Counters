@@ -8,14 +8,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using Microsoft.VisualBasic;
 
 namespace Counters
 {
     public partial class MainActivity : Form
     {
+        //标识计时器是否开始计时
+        private Boolean isStart = false;
+        private string time = "0";
         //
         private FormBorder formBorder;
         private SynchronizationContext _syncContext = null;
@@ -34,7 +37,12 @@ namespace Counters
         protected const int minWidth = 1022;
         protected const int minHeight = 670;
 
+        //
+        private Color selectedColor;
+        private Color unSelectedColor;
+
         private Panel[] contentPanels;
+        private static Button[] functionButtons;
 
         private enum SKINS
         {
@@ -48,8 +56,14 @@ namespace Counters
         public MainActivity()
         {
             InitializeComponent();
+            //
+            InitData();
         }
-
+        private void InitData()
+        {
+            //功能菜单按钮
+            functionButtons = new Button[] { button_main };
+        }
         //
         private void MouseDownEvent(object sender, MouseEventArgs e)
         {
@@ -314,12 +328,22 @@ namespace Counters
         private void FoldingMenuOperate(object sender, EventArgs e)
         {
             Button button = sender as Button;
+
+            //功能菜单按钮重置
+            foreach (Button _button in functionButtons)
+            {
+                _button.BackColor = unSelectedColor;
+            }
+
+            button.BackColor = selectedColor;
+
             switch (button.Name)
             {
                 //
                 case "button_main":
                     panel_main.Visible = true;
-                    panel_menu_1_content.Visible = true;
+                    //TODO:需要显示当前选项内容
+                    //panel_menu_1_content.Visible = true;
                     break;
                 //
                 case "button_timer":
@@ -415,7 +439,7 @@ namespace Counters
         {
             //
             themeType = (int)skins;
-
+            selectedColor = ColorTranslator.FromHtml("#D7D7D7");
             Color color_first = ColorTranslator.FromHtml("#F5F5F7");
             Color color_second = ColorTranslator.FromHtml("#FAFAFA");
             Color color_third = ColorTranslator.FromHtml("#44AAF8");
@@ -425,6 +449,7 @@ namespace Counters
             switch (skins)
             {
                 case SKINS.BLACK:
+                    selectedColor = Color.White;
                     color_first = ColorTranslator.FromHtml("#191B1F");
                     color_second = ColorTranslator.FromHtml("#16181C");
                     color_third = ColorTranslator.FromHtml("#222225");
@@ -457,27 +482,31 @@ namespace Counters
             }
 
             //
+            unSelectedColor = color_first;
             this.BackColor = color_first;
             pictureBox_sizeEditable.BackColor = color_first;
             //Content_Left
             panel_menu_1.BackColor = color_first;
             panel_menu_2.BackColor = color_first;
             panel_menu_3.BackColor = color_first;
+            panel_menu_4.BackColor = color_first;
             panel_menu_1_content.BackColor = color_first;
             panel_reset.BackColor = color_first;
             panel_record.BackColor = color_first;
             splitContainer_content.Panel1.BackColor = color_first;
             panel2.BackColor = color_first;
             panel3.BackColor = color_first;
-            button_main.BackColor = color_first;
+            //第一项默认为选中
+            button_main.BackColor = selectedColor;
             button_timer.BackColor = color_first;
             button_record.BackColor = color_first;
+            button_reset.BackColor = color_first;
 
             //Content_Right
             splitContainer_content.Panel2.BackColor = color_second;
 
             panel1.BackColor = color_second;
-            panel4.BackColor = color_second;
+            panel1.BackColor = color_second;
             panel5.BackColor = color_second;
             panel6.BackColor = color_second;
             panel7.BackColor = color_second;
@@ -515,6 +544,7 @@ namespace Counters
             button_main.ForeColor = color_label_title;
             button_timer.ForeColor = color_label_title;
             button_record.ForeColor = color_label_title;
+            button_reset.ForeColor = color_label_title;
             textBox_recordContent.ForeColor = color_label_content;
             label_recordTitle.ForeColor = color_label_content;
         }
@@ -525,6 +555,229 @@ namespace Counters
             Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             configuration.AppSettings.Settings["THEME"].Value = themeType.ToString();
             configuration.Save();
+        }
+
+        private void InputContent(object sender, EventArgs e)
+        {
+            if (isStart)
+            {
+                MessageBox.Show("计时器已经启动，不可操作！", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Label label = sender as Label;
+            string _name = "战队名称";
+            switch (label.Name)
+            {
+                case "label_teamRedName":
+                    _name = "红方战队名称";
+                    break;
+                case "label_playerRedName":
+                    _name = "红方选手姓名";
+                    break;
+                case "label_teamBlueName":
+                    _name = "蓝方战队名称";
+                    break;
+                case "label_playerBlueName":
+                    _name = "蓝方选手姓名";
+                    break;
+
+            }
+            string input = Interaction.InputBox("请输入" + _name, "系统消息", "输入为空则视为无效", -1, -1);
+            //如果输入合法
+            if (!string.IsNullOrEmpty(input))
+            {
+                label.Text = input;
+            }
+        }
+
+        //
+        private void PointOperator(object sender, EventArgs e)
+        {
+            if (!isStart)
+            {
+                MessageBox.Show("计时器暂未启动，不可操作！", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            Button button = sender as Button;
+            int value;
+            switch (button.Name)
+            {
+                //RedPoint +
+                case "button_RedPAdd":
+                    value = int.Parse(label_RedP.Text);
+                    value++;
+                    label_RedP.Text = value.ToString();
+                    break;
+                //RedPoint -
+                case "button_RedPSub":
+                    value = int.Parse(label_RedP.Text);
+                    value--;
+                    label_RedP.Text = value.ToString();
+                    break;
+                //RedAdvance +
+                case "button_RedAAdd":
+                    value = int.Parse(label_RedA.Text);
+                    value++;
+                    label_RedA.Text = value.ToString();
+                    break;
+                //RedAdvance -
+                case "button_RedASub":
+                    value = int.Parse(label_RedA.Text);
+                    value--;
+                    label_RedA.Text = value.ToString();
+                    break;
+                //RedWarninng +
+                case "button_RedWAdd":
+                    value = int.Parse(label_RedW.Text);
+                    value++;
+                    label_RedW.Text = value.ToString();
+                    break;
+                //RedWarning -
+                case "button_RedWSub":
+                    value = int.Parse(label_RedW.Text);
+                    value--;
+                    label_RedW.Text = value.ToString();
+                    break;
+                //BluePoint +
+                case "button_BluePAdd":
+                    value = int.Parse(label_BlueP.Text);
+                    value++;
+                    label_BlueP.Text = value.ToString();
+                    break;
+                //BluePoint -
+                case "button_BluePSub":
+                    value = int.Parse(label_BlueP.Text);
+                    value--;
+                    label_BlueP.Text = value.ToString();
+                    break;
+                //BlueAdvance +
+                case "button_BlueAAdd":
+                    value = int.Parse(label_BlueA.Text);
+                    value++;
+                    label_BlueA.Text = value.ToString();
+                    break;
+                //BlueAdvance -
+                case "button_BlueASub":
+                    value = int.Parse(label_BlueA.Text);
+                    value--;
+                    label_BlueA.Text = value.ToString();
+                    break;
+                //RedWarninng +
+                case "button_BlueWAdd":
+                    value = int.Parse(label_BlueW.Text);
+                    value++;
+                    label_BlueW.Text = value.ToString();
+                    break;
+                //RedWarning -
+                case "button_BlueWSub":
+                    value = int.Parse(label_BlueW.Text);
+                    value--;
+                    label_BlueW.Text = value.ToString();
+                    break;
+            }
+        }
+
+        private void ResetTool(object sender, EventArgs e)
+        {
+            if (isStart)
+            {
+                DialogResult result = MessageBox.Show("计时器仍在运行，是否要重置工具？", "系统消息", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                //
+                if (result != DialogResult.Yes) return;
+            }
+
+            //
+            time = "0";
+            label_time.Text = "0";
+            label_time.Visible = false;
+            timer.Enabled = false;
+            isStart = false;
+            label_RedP.Text = "0";
+            label_RedA.Text = "0";
+            label_RedW.Text = "0";
+            label_BlueP.Text = "0";
+            label_BlueA.Text = "0";
+            label_BlueW.Text = "0";
+            label_teamRedName.Text = "战队名称";
+            label_teamBlueName.Text = "战队名称";
+            label_playerRedName.Text = "选手姓名";
+            label_playerBlueName.Text = "选手姓名";
+            //
+            MessageBox.Show("工具已重置~", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //计时器操作
+        private void TimerOperator(object sender, EventArgs e)
+        {
+            if (isStart)
+            {
+                DialogResult result = MessageBox.Show("计时器正在运行，是否要重置？", "系统消息", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                if (result == DialogResult.Yes)
+                {
+                    time = "0";
+                    timer.Enabled = false;
+                    isStart = false;
+                    label_time.Text = "0";
+                    label_time.Visible = false;
+                }
+                else return;
+            }
+            time = Interaction.InputBox("请输入倒计时的时长", "系统消息", "时间格式为3:05/1:23:48", -1, -1);
+            //TODO:处理用户的输入
+            string[] values = time.Split(':');
+
+            if (string.IsNullOrEmpty(time) || values.Length > 3) time = "0";
+
+            int _time = 0;
+            try
+            {
+                if (int.Parse(time) > 0)
+                {
+                    for (int i = values.Length - 1; i >= 0; i--)
+                    {
+                        _time += int.Parse(values[i]) * (int)Math.Pow(60, values.Length - 1 - i);
+                    }
+                    time = _time.ToString();
+                    //
+                    timer.Enabled = true;
+                    isStart = true;
+                    //
+                    label_time.Visible = true;
+
+                }
+                else
+                {
+                    MessageBox.Show("时长格式错误，请重新输入！", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("时长格式错误，请重新输入！", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            int _time = int.Parse(time) - 1;
+            time = _time.ToString();
+
+            if (_time < 4)
+            {
+                Console.Beep();
+                if (_time == 0)
+                {
+                    //
+                    timer.Enabled = false;
+                    isStart = false;
+                    //
+                    label_time.Visible = false;
+                    MessageBox.Show("时间到！", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            //
+            label_time.Text = _time / 3600 + ":" + _time % 3600 / 60 + ":" + (_time % 60).ToString();
         }
     }
 }

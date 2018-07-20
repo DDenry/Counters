@@ -7,3 +7,5 @@ D:\Project\Code\Counters\Counters\obj\Release\Counters.csproj.GenerateResource.C
 D:\Project\Code\Counters\Counters\obj\Release\Counters.csproj.CoreCompileInputs.cache
 D:\Project\Code\Counters\Counters\obj\Release\Counters.exe
 D:\Project\Code\Counters\Counters\obj\Release\Counters.pdb
+D:\Project\Code\Counters\Counters\obj\Release\Counters.FormBorder.resources
+D:\Project\Code\Counters\Counters\obj\Release\Counters.csprojAssemblyReference.cache
