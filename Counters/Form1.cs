@@ -11,11 +11,13 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Configuration;
 using Microsoft.VisualBasic;
+using System.Media;
 
 namespace Counters
 {
     public partial class MainActivity : Form
     {
+        private SoundPlayer soundPlayer;
         //标识计时器是否开始计时
         private Boolean isStart = false;
         private string time = "0";
@@ -272,6 +274,9 @@ namespace Counters
 
         private void MainActivity_Load(object sender, EventArgs e)
         {
+            soundPlayer = new SoundPlayer(Resources.dingdingding);
+            soundPlayer.LoadAsync();
+
             themeNum = Enum.GetNames(new SKINS().GetType()).Length;
             ChangeThemeColor((SKINS)GetConfigTheme());
             //
@@ -733,7 +738,7 @@ namespace Counters
             int _time = 0;
             try
             {
-                if (int.Parse(time) > 0)
+                if (values.Length > 0)
                 {
                     for (int i = values.Length - 1; i >= 0; i--)
                     {
@@ -773,11 +778,22 @@ namespace Counters
                     isStart = false;
                     //
                     label_time.Visible = false;
+                    //
+                    new Thread(() =>
+                    {
+                        soundPlayer.PlaySync();
+                    }).Start();
+                    //
                     MessageBox.Show("时间到！", "系统消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             //
             label_time.Text = _time / 3600 + ":" + _time % 3600 / 60 + ":" + (_time % 60).ToString();
+        }
+
+        private void ResumeOrPauseTimer(object sender, EventArgs e)
+        {
+            timer.Enabled = !timer.Enabled;
         }
     }
 }

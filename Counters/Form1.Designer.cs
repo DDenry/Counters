@@ -36,6 +36,7 @@
             this.button_sizable = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
             this.panel_bottom = new System.Windows.Forms.Panel();
+            this.label_time = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox_sizeEditable = new System.Windows.Forms.PictureBox();
             this.splitContainer_content = new System.Windows.Forms.SplitContainer();
@@ -114,11 +115,10 @@
             this.listBox_matchRecords = new System.Windows.Forms.ListBox();
             this.label_recordTitle = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.label_time = new System.Windows.Forms.Label();
             this.panel_title.SuspendLayout();
             this.panel_controllButton.SuspendLayout();
             this.panel_bottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)this.pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_sizeEditable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer_content)).BeginInit();
             this.splitContainer_content.Panel1.SuspendLayout();
@@ -244,6 +244,20 @@
             this.panel_bottom.Name = "panel_bottom";
             this.panel_bottom.Size = new System.Drawing.Size(1095, 220);
             this.panel_bottom.TabIndex = 0;
+            // 
+            // label_time
+            // 
+            this.label_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label_time.AutoSize = true;
+            this.label_time.Font = new System.Drawing.Font("微软雅黑", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_time.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.label_time.Location = new System.Drawing.Point(485, 43);
+            this.label_time.Name = "label_time";
+            this.label_time.Size = new System.Drawing.Size(0, 128);
+            this.label_time.TabIndex = 2;
+            this.label_time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_time.Visible = false;
+            this.label_time.DoubleClick += new System.EventHandler(this.ResumeOrPauseTimer);
             // 
             // pictureBox4
             // 
@@ -1307,19 +1321,6 @@
             // 
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // label_time
-            // 
-            this.label_time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label_time.AutoSize = true;
-            this.label_time.Font = new System.Drawing.Font("微软雅黑", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_time.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label_time.Location = new System.Drawing.Point(485, 43);
-            this.label_time.Name = "label_time";
-            this.label_time.Size = new System.Drawing.Size(0, 128);
-            this.label_time.TabIndex = 2;
-            this.label_time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_time.Visible = false;
             // 
             // MainActivity
             // 
